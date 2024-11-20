@@ -15,13 +15,13 @@ class _LocationSearchScreenState extends State<LocationSearchScreen> {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          style: TextStyle(decorationColor: Color(0)),
           decoration: InputDecoration(
             hintText: '장소, 강의실 번호, 강의실 이름 검색',
             border: InputBorder.none,
           ),
         ),
-        backgroundColor: Colors.white,
-
+        backgroundColor: Colors.lightBlue,
       ),
       body: Container(
         color: Colors.grey.withOpacity(0.3),
@@ -35,7 +35,7 @@ class _LocationSearchScreenState extends State<LocationSearchScreen> {
                   children: [
                     Row(
                       children: [
-                        
+                        Container(),
                         Container(child: Chip(label: Text("최근 검색"))),
                         Container(child: Chip(label: Text("최근 검색"))),
                         Container(child: Chip(label: Text("최근 검색"))),

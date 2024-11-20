@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: TemporaryHomePage(),
+      // body: CircleIcon()
     );
   }
 
@@ -82,6 +83,7 @@ class PlaceSearchScreen extends StatelessWidget {
               ],
             ),
           ),
+
 
           // 리스트 뷰
           Expanded(
