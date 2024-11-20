@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testmap/screen/temporary_home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,26 +9,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PlaceSearchScreen(),
+      home: TemporaryHomePage(),
     );
   }
-}
 
+}
 
 class PlaceSearchScreen extends StatelessWidget {
   final List<Place> places = [
-    Place(icon: Icons.location_on, name: '보건복지과학대학1동'),
+    Place(icon: Icons.star, name: '보건복지과학대학1동', isFavorite: true),
     Place(icon: Icons.location_on, name: '학생군사교육단'),
     Place(icon: Icons.location_on, name: '골프실기장'),
     Place(icon: Icons.star, name: 'SE실습실 (7202)', isFavorite: true),
-    Place(icon: Icons.location_on, name: '보건복지과학대학1동'),
+    Place(icon: Icons.star, name: '보건복지과학대학1동', isFavorite: true),
     Place(icon: Icons.location_on, name: '학생군사교육단'),
-    Place(icon: Icons.location_on, name: '보건복지과학대학1동'),
+    Place(icon: Icons.star, name: '보건복지과학대학1동', isFavorite: true),
     Place(icon: Icons.location_on, name: '학생군사교육단'),
     Place(icon: Icons.location_on, name: '인성관'),
     Place(icon: Icons.location_on, name: '운동장장'),
     Place(icon: Icons.location_on, name: '용인대 정문'),
-    Place(icon: Icons.location_on, name: '용인대 탈출버튼'),
+    Place(icon: Icons.location_on, name: '용인대 후문'),
+    Place(icon: Icons.location_on, name: '용인대 동문'),
+    Place(icon: Icons.location_on, name: '용인대 서문')
     // 필요한 만큼 더 추가 가능
   ];
 
@@ -35,10 +38,7 @@ class PlaceSearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text('장소 검색'),
-        backgroundColor: Colors.grey[800],
-      ),
+      appBar: AppBar(),
       body: Column(
         children: [
           // 검색창
@@ -76,9 +76,9 @@ class PlaceSearchScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FilterChipWidget(label: '최근검색', color: Colors.blue),
-                FilterChipWidget(label: '즐겨찾기', color: Colors.blue),
-                FilterChipWidget(label: '자주 간 장소', color: Colors.blue),
+                FilterChipWidget(label: '최근검색', color: Colors.blueAccent),
+                FilterChipWidget(label: '즐겨찾기', color: Colors.blueAccent),
+                FilterChipWidget(label: '자주 간 장소', color: Colors.blueAccent),
               ],
             ),
           ),
@@ -122,10 +122,9 @@ class FilterChipWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilterChip(
       labelPadding: EdgeInsets.symmetric(horizontal: 10),
-        padding: EdgeInsets.all(4),
+      padding: EdgeInsets.all(4),
       label: Text(label, style: TextStyle(color: Colors.white)),
       backgroundColor: color,
-      
       onSelected: (_) {
         print('$label 선택됨');
       },
@@ -153,7 +152,8 @@ class PlaceItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(place.icon, color: place.isFavorite ? Colors.orange : Colors.grey),
+            Icon(place.icon,
+                color: place.isFavorite ? Colors.orange : Colors.grey),
             SizedBox(width: 12),
             Text(
               place.name,
